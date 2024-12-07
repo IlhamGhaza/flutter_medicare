@@ -47,7 +47,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               },
               itemBuilder: (context, index) {
                 var obj = pageArr[index];
-
                 return Column(
                   children: [
                     SizedBox(
@@ -182,11 +181,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ],
       ),
     );
+
+    
   }
 
   //TODO: ACTION
   void actionNextScreen() {
     debugPrint("Last Page Screen Open");
-    context.push(const LoginScreen());
+    context.push( const LoginScreen() );
   }
 }

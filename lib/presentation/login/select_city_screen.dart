@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../common/color_extension.dart';
 import 'on_boarding_screen.dart';
-
 
 class SelectCityScreen extends StatefulWidget {
   const SelectCityScreen({super.key});
@@ -51,7 +49,7 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
                 ),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius: BorderRadius.circular(25),
                     boxShadow: const [
                       BoxShadow(
                           color: Colors.black26,
@@ -84,13 +82,14 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
                   size: 25,
                 ),
                 const SizedBox(
-                  width: 8,
+                  width: 15,
                 ),
                 Text(
-                  "User Your Current Location",
+                  "Use your Current Location",
                   style: TextStyle(
                     color: TColor.black,
                     fontSize: 14,
+                    fontWeight: FontWeight.w600,
                   ),
                 )
               ],
@@ -114,16 +113,14 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
                       setState(() {
                         selectIndex = index;
                       });
-
-                      context.push( OnBoardingScreen() );
-
+                      context.push(const OnBoardingScreen());
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 10),
+                          vertical: 10, horizontal: 10),
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "India",
+                        "Indonesia",
                         style: TextStyle(
                           color: selectIndex == index
                               ? TColor.black
