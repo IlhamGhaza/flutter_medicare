@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_medicare/presentation/home/home_tab_screen.dart';
 
 import '../../common/color_extension.dart';
 
@@ -115,7 +116,7 @@ class _MainTabScreenState extends State<MainTabScreen>
             child: TabBarView(
               controller: controller,
               children: [
-                Container(),
+                const HomeTabScreen(),
                 Container(),
                 Container(),
               ],
