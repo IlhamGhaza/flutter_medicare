@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_medicare/common_widget/category_button.dart';
-import 'package:flutter_medicare/common_widget/section_row.dart';
-import 'package:flutter_medicare/presentation/home/doctor_cell.dart';
-import 'package:flutter_medicare/presentation/home/shop_cell.dart';
-import 'package:flutter_rating_stars/flutter_rating_stars.dart';
-import '../../common/color_extension.dart';
+import 'package:flutter_medicare/common/color_extension.dart';
+
+import '../../common_widget/category_button.dart';
+import '../../common_widget/section_row.dart';
+import 'doctor_cell.dart';
+import 'shop_cell.dart';
 
 class HomeTabScreen extends StatefulWidget {
   const HomeTabScreen({super.key});
@@ -15,41 +15,21 @@ class HomeTabScreen extends StatefulWidget {
 
 class _HomeTabScreenState extends State<HomeTabScreen> {
   List categoryArr = [
-    {
-      "title": "Heart Issue",
-      "icon": "assets/img/heart.png",
-    },
-    {
-      "title": "Lung Issue",
-      "icon": "assets/img/lung.png",
-    },
-    {
-      "title": "Cancer Issue",
-      "icon": "assets/img/cancer.png",
-    },
-    {
-      "title": "Sugar Issue",
-      "icon": "assets/img/sugar.png",
-    },
-    // {
-    //   "title": "Bone Issue",
-    //   "icon": "assets/img/bone.png",
-    // },
-    // {
-    //   "title": "Skin Issue",
-    //   "icon": "assets/img/skin.png",
-    // },
+    {"title": "Heart Issue", "img": "assets/img/heart.png"},
+    {"title": "Lung Issue", "img": "assets/img/lung.png"},
+    {"title": "Cancer Issue", "img": "assets/img/cancer.png"},
+    {"title": "Sugar Issue", "img": "assets/img/sugar.png"},
   ];
+
   List adsArr = [
     {
-      // "title": "Ad 1",
-      "image": "assets/img/ad_1.png",
+      "img": "assets/img/ad_1.png",
     },
     {
-      // "title": "Ad 2",
-      "image": "assets/img/ad_2.png",
-    }
+      "img": "assets/img/ad_2.png",
+    },
   ];
+
   List nearDoctorArr = [
     {
       "name": "Dr. Mainsh",
@@ -85,6 +65,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
       "img": "assets/img/s3.png"
     },
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,16 +78,18 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(
-                  vertical: 15,
                   horizontal: 20,
+                  vertical: 15,
                 ),
                 itemBuilder: (context, index) {
                   var obj = categoryArr[index];
+
                   return CategoryButton(
-                    title: obj["title"],
-                    icon: obj["icon"],
-                    onPressed: () {},
-                  );
+                      title: obj["title"],
+                      icon: obj["img"],
+                      onPressed: () {
+                        // context.push(const CategoryFilterScreen());
+                      });
                 },
                 separatorBuilder: (context, index) => const SizedBox(
                   width: 25,
@@ -114,48 +97,44 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                 itemCount: categoryArr.length,
               ),
             ),
-            Container(
-              // color: Colors.white,
+            SizedBox(
+              // color: Colors.red,
               height: context.width * 0.5,
               child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 20,
-                  horizontal: 20,
-                ),
-                itemBuilder: (context, index) {
-                  var obj = adsArr[index];
-                  return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 1,
+                  scrollDirection: Axis.horizontal,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  itemBuilder: (context, index) {
+                    var obj = adsArr[index];
+                    return InkWell(
+                      onTap: () {},
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: const [
+                              BoxShadow(color: Colors.black12, blurRadius: 1)
+                            ]),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(
+                            10,
                           ),
-                        ],
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          obj["image"],
-                          width: context.width * 0.05,
-                          height: context.width * 0.44,
-                          fit: BoxFit.cover,
+                          child: Image.asset(
+                            obj["img"],
+                            width: context.width * 0.85,
+                            height: context.width * 0.425,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ));
-                },
-                separatorBuilder: (context, index) => const SizedBox(
-                  width: 15,
-                ),
-                itemCount: adsArr.length,
-              ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) => const SizedBox(
+                        width: 15,
+                      ),
+                  itemCount: adsArr.length),
             ),
-            SectionRow(
-              title: "Doctor near you",
-              onPressed: () {},
-            ),
+            SectionRow(title: "Doctors near by you", onPressed: () {}),
             SizedBox(
               height: 220,
               child: ListView.separated(
@@ -164,9 +143,10 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return DoctorCell(
-                      obj: nearDoctorArr[index],
-                      onPressed: () {},
-                    );
+                        obj: nearDoctorArr[index],
+                        onPressed: () {
+                          // context.push(const OnlyDoctorProfileScreen());
+                        });
                   },
                   separatorBuilder: (context, index) => const SizedBox(
                         width: 20,
@@ -174,9 +154,10 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                   itemCount: nearDoctorArr.length),
             ),
             SectionRow(
-              title: "Medical Shop near you",
-              onPressed: () {},
-            ),
+                title: "Medical Shop near by you",
+                onPressed: () {
+                  // context.push(const MedicalShopListScreen());
+                }),
             SizedBox(
               height: 220,
               child: ListView.separated(
@@ -185,9 +166,10 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return ShopCell(
-                      obj: nearShopArr[index],
-                      onPressed: () {},
-                    );
+                        obj: nearShopArr[index],
+                        onPressed: () {
+                          // context.push(const MedicalShopProfileScreen());
+                        });
                   },
                   separatorBuilder: (context, index) => const SizedBox(
                         width: 20,

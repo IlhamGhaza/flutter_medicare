@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_medicare/common_widget/menu_row.dart';
 import 'package:flutter_medicare/presentation/home/home_tab_screen.dart';
 
 import '../../common/color_extension.dart';
@@ -14,6 +15,25 @@ class _MainTabScreenState extends State<MainTabScreen>
     with SingleTickerProviderStateMixin {
   late TabController controller;
   int selectTab = 0;
+  final GlobalKey<ScaffoldState> sStateKey = GlobalKey();
+  List menuArr = [
+    {'name': 'My Appointments', 'icon': 'assets/img/my_apo.png', 'action': '1'},
+    {
+      'name': 'New Appointment',
+      'icon': 'assets/img/new_app.png',
+      'action': '2'
+    },
+    {'name': 'Medical Records', 'icon': 'assets/img/recode.png', 'action': '3'},
+    {'name': 'Forum', 'icon': 'assets/img/forum.png', 'action': '4'},
+    {
+      'name': 'Account Settings',
+      'icon': 'assets/img/account_setting.png',
+      'action': '5'
+    },
+    {'name': 'Help', 'icon': 'assets/img/help.png', 'action': '6'},
+    {'name': 'Logout', 'icon': 'assets/img/logout.png', 'action': '7'}
+  ];
+
   @override
   void initState() {
     // TODO: implement initState
@@ -36,10 +56,111 @@ class _MainTabScreenState extends State<MainTabScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // drawer side menu
+      key: sStateKey,
+      drawer: Drawer(
+        width: context.width * 0.6,
+        shadowColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: TColor.primary,
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(8),
+                  bottomRight: Radius.circular(8),
+                ),
+              ),
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            onPressed: () =>
+                                sStateKey.currentState?.closeDrawer(),
+                            icon: const Icon(
+                              Icons.close,
+                              size: 25,
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              'assets/img/u1.png',
+                              width: 80,
+                              height: 80,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'User 0001',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Text(
+                                  'Desc 0001',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                itemBuilder: (context, index) {
+                  var obj = menuArr[index];
+                  return MenuRow(obj: obj, onPressed: () {});
+                },
+                separatorBuilder: (context, index)=> Divider(
+                  color: Colors.black12,
+                  height: 1,
+                ),
+                itemCount: menuArr.length,
+              ),
+            )
+          ],
+        ),
+      ),
+
+      // app bar
       appBar: AppBar(
         centerTitle: false,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            sStateKey.currentState?.openDrawer();
+          },
           icon: const Icon(
             Icons.menu,
             size: 35,
@@ -70,13 +191,15 @@ class _MainTabScreenState extends State<MainTabScreen>
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
-                  children:[
+                  children: [
                     Icon(
                       Icons.location_on_outlined,
                       color: TColor.primary,
                       size: 15,
                     ),
-                    const SizedBox(width: 8,),
+                    const SizedBox(
+                      width: 8,
+                    ),
                     Text(
                       "Jakarta",
                       style: TextStyle(
@@ -100,6 +223,8 @@ class _MainTabScreenState extends State<MainTabScreen>
           ),
         ],
       ),
+
+      // body
       body: Column(
         children: [
           Container(
