@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_medicare/common_widget/menu_row.dart';
+import 'package:flutter_medicare/presentation/chat/chat_screen.dart';
 import 'package:flutter_medicare/presentation/home/home_tab_screen.dart';
 
 import '../../common/color_extension.dart';
+import '../setting/setting_screen.dart';
 
 class MainTabScreen extends StatefulWidget {
   const MainTabScreen({super.key});
@@ -242,8 +244,8 @@ class _MainTabScreenState extends State<MainTabScreen>
               controller: controller,
               children: [
                 const HomeTabScreen(),
-                Container(),
-                Container(),
+                const ChatScreen(),
+                const SettingScreen(),
               ],
             ),
           ),
