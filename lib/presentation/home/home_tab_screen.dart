@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_medicare/common/color_extension.dart';
-
+import 'medical_shop/medical_shop_profile.dart';
 import '../../common_widget/category_button.dart';
 import '../../common_widget/section_row.dart';
 import 'category_filter_screen.dart';
 import 'doctor/doctor_cell.dart';
 import 'doctor/only_docter_profile_screen.dart';
+import 'medical_shop/medical_shop_list_screen.dart';
 import 'shop_cell.dart';
 
 class HomeTabScreen extends StatefulWidget {
@@ -158,7 +159,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
             SectionRow(
                 title: "Medical Shop near by you",
                 onPressed: () {
-                  // context.push(const MedicalShopListScreen());
+                  context.push(const MedicalShopListScreen());
                 }),
             SizedBox(
               height: 220,
@@ -170,7 +171,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                     return ShopCell(
                         obj: nearShopArr[index],
                         onPressed: () {
-                          // context.push(const MedicalShopProfileScreen());
+                          context.push(const MedicalShopProfile());
                         });
                   },
                   separatorBuilder: (context, index) => const SizedBox(
