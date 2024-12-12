@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_medicare/presentation/home/medical_shop/shop_rows.dart';
-import 'package:flutter_rating_stars/flutter_rating_stars.dart';
-
 import '../../../common/color_extension.dart';
 
 class MedicalShopListScreen extends StatefulWidget {
@@ -16,7 +14,6 @@ class _MedicalShopListScreenState extends State<MedicalShopListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
         leading: IconButton(
           onPressed: () {
             context.pop();
@@ -24,13 +21,13 @@ class _MedicalShopListScreenState extends State<MedicalShopListScreen> {
           icon: const Icon(
             Icons.close,
             color: Colors.white,
-            size: 25,
           ),
         ),
-        title: Text(
-          "Medical Shop List",
+        centerTitle: false,
+        title: const Text(
+          "Medical shop near by you",
           style: TextStyle(
-            color: TColor.primaryTextW,
+            color: Colors.white,
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
@@ -40,12 +37,12 @@ class _MedicalShopListScreenState extends State<MedicalShopListScreen> {
       body: Column(
         children: [
           Container(
-            height: 35,
+            height: 20,
             decoration: BoxDecoration(
               color: TColor.primary,
               borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(15),
-                bottomRight: Radius.circular(15),
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
               ),
             ),
           ),
@@ -58,11 +55,11 @@ class _MedicalShopListScreenState extends State<MedicalShopListScreen> {
               itemBuilder: (context, index) {
                 return ShopRow(onPressed: () {}, obj: {});
               },
-              separatorBuilder: (context, index) => Padding(
+              separatorBuilder: (context, index) => const Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 15,
                 ),
-                child: const Divider(
+                child: Divider(
                   color: Colors.black12,
                   height: 1,
                 ),
