@@ -1,7 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/color_extension.dart';
+import '../../../common/color_extension.dart';
 import 'add_card_screen.dart';
 
 class PaymentScreen extends StatefulWidget {

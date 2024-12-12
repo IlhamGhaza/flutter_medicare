@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../common/color_extension.dart';
+import '../../../common/color_extension.dart';
 import 'doctor_profile_screen.dart';
 import 'doctor_row.dart';
 

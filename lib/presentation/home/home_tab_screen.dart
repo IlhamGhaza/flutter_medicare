@@ -4,8 +4,8 @@ import 'package:flutter_medicare/common/color_extension.dart';
 import '../../common_widget/category_button.dart';
 import '../../common_widget/section_row.dart';
 import 'category_filter_screen.dart';
-import 'doctor_cell.dart';
-import 'only_docter_profile_screen.dart';
+import 'doctor/doctor_cell.dart';
+import 'doctor/only_docter_profile_screen.dart';
 import 'shop_cell.dart';
 
 class HomeTabScreen extends StatefulWidget {

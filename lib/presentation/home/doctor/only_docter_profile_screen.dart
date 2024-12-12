@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_medicare/common/color_extension.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
-import '../../common/color_extension.dart';
-import 'appointment_booking_screen.dart';
-import 'doctor_row.dart';
 
-class DoctorProfileScreen extends StatefulWidget {
-  const DoctorProfileScreen({super.key});
+import '../../chat/chat_screen.dart';
+
+class OnlyDoctorProfileScreen extends StatefulWidget {
+  const OnlyDoctorProfileScreen({super.key});
 
   @override
-  State<DoctorProfileScreen> createState() => _DoctorProfileScreenState();
+  State<OnlyDoctorProfileScreen> createState() =>
+      _OnlyDoctorProfileScreenState();
 }
 
-class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
+class _OnlyDoctorProfileScreenState extends State<OnlyDoctorProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,14 +26,6 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
             Icons.close,
             color: Colors.white,
             size: 25,
-          ),
-        ),
-        title: Text(
-          "Doctors Profile",
-          style: TextStyle(
-            color: TColor.primaryTextW,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
           ),
         ),
       ),
@@ -232,6 +225,7 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
             Container(
               width: double.maxFinite,
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding: const EdgeInsets.symmetric(vertical: 15),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
@@ -304,21 +298,21 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                           height: 8,
                         ),
                         Text(
-                          "Cardiac Rehabilitisation",
+                          "Bed Facility",
                           style: TextStyle(
                             color: TColor.unselect,
                             fontSize: 12,
                           ),
                         ),
                         Text(
-                          "Cardiac Surgery",
+                          "ICU",
                           style: TextStyle(
                             color: TColor.unselect,
                             fontSize: 12,
                           ),
                         ),
                         Text(
-                          "Cardiac Intensive care",
+                          "24 Hours Ambulance",
                           style: TextStyle(
                             color: TColor.unselect,
                             fontSize: 12,
@@ -344,131 +338,6 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                   const Divider(
                     color: Colors.black26,
                     height: 1,
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Experience",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          itemBuilder: (context, index) {
-                            return Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 6,
-                                  height: 6,
-                                  margin: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                      color: TColor.primary,
-                                      borderRadius: BorderRadius.circular(3)),
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    "The Dr. Manish Chutake has a cumulative years of Experience of 4000  heart surgeries.",
-                                    style: TextStyle(
-                                      color: TColor.unselect,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                          separatorBuilder: (context, index) => const SizedBox(
-                            height: 8,
-                          ),
-                          itemCount: 3,
-                        )
-                      ],
-                    ),
-                  ),
-                  const Divider(
-                    color: Colors.black26,
-                    height: 1,
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Feedback",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        Text(
-                          "The service of the Dr. Manish Chutake and staff is Good.",
-                          style: TextStyle(
-                            color: TColor.unselect,
-                            fontSize: 12,
-                          ),
-                        ),
-                        Container(
-                          height: 50,
-                          margin: const EdgeInsets.symmetric(vertical: 8),
-                          decoration: BoxDecoration(
-                              color: const Color(0xffEDEDED),
-                              borderRadius: BorderRadius.circular(25)),
-                          child: Row(
-                            children: [
-                              const Expanded(
-                                child: Text(
-                                  "Give Feedback",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: InkWell(
-                                  onTap: () {
-                                    context
-                                        .push(const AppointmentBookingScreen(),);
-                                  },
-                                  child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        color: TColor.primary,
-                                        borderRadius:
-                                            BorderRadius.circular(25)),
-                                    alignment: Alignment.center,
-                                    child: const Text(
-                                      "Book",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
                   ),
                   const Divider(
                     color: Colors.black26,
@@ -498,6 +367,27 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                             ),
                           ),
                         ),
+                      ],
+                    ),
+                  ),
+                  const Divider(
+                    color: Colors.black26,
+                    height: 1,
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Contact",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -519,44 +409,74 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                                 ),
                               ),
                             ),
+                            InkWell(
+                              onTap: () {},
+                              child: Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: TColor.green,
+                                  borderRadius: BorderRadius.circular(
+                                    10,
+                                  ),
+                                ),
+                                child: const Icon(
+                                  Icons.phone,
+                                  color: Colors.white,
+                                  size: 15,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: TColor.primary,
+                                  borderRadius: BorderRadius.circular(
+                                    10,
+                                  ),
+                                ),
+                                child: const Icon(
+                                  Icons.video_call,
+                                  color: Colors.white,
+                                  size: 15,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                context.push(const ChatScreen());
+                              },
+                              child: Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffF8A370),
+                                  borderRadius: BorderRadius.circular(
+                                    10,
+                                  ),
+                                ),
+                                child: const Icon(
+                                  Icons.message,
+                                  color: Colors.white,
+                                  size: 15,
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ],
                     ),
                   ),
-                  const Divider(
-                    color: Colors.black26,
-                    height: 1,
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Other Staff",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          itemBuilder: (context, index) {
-                            return DoctorRow(onPressed: () {});
-                          },
-                          separatorBuilder: (context, index) => const SizedBox(
-                            height: 8,
-                          ),
-                          itemCount: 3,
-                        )
-                      ],
-                    ),
-                  ),
+                 
                 ],
               ),
             )

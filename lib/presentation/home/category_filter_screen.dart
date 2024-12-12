@@ -2,7 +2,7 @@ import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_medicare/common/color_extension.dart';
 
-import 'doctor_list_screen.dart';
+import 'doctor/doctor_list_screen.dart';
 
 
 class CategoryFilterScreen extends StatefulWidget {
