@@ -151,6 +151,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   )
                 ],
               ),
+              //( ----------------------------- )
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 15),
                 child: Divider(
@@ -233,6 +234,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
                 itemCount: 2,
               ),
+              //( ----------------------------- )
               const Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: Divider(
